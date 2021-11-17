@@ -4,12 +4,21 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Введите целое неотрицательное число number:");
-        int number = sc.nextInt();
+        int number = readNumber();
         int countOfNumber = count(number);
         int sum = sumUpDigitsInNumber(number, countOfNumber);
         printAnswer(countOfNumber, sum);
+    }
+
+    private static int readNumber() {
+        System.out.println("Введите целое число number:");
+        Scanner sc = new Scanner(System.in);
+        int value = sc.nextInt();
+        if(value < 0) {
+            System.out.println("Данные не корректны, введённое число number меньше 0");
+            System.exit(0);
+        }
+        return value;
     }
 
     private static int count(int number) {
